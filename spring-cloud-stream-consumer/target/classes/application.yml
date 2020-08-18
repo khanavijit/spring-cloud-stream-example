@@ -3,4 +3,13 @@ spring:
     stream:
       bindings:
         input:
-          destination: javatechie-stream
+          destination: pdsm-status-topic
+          group: pdsm-order=service
+          contentType: application/json
+      kafka:
+        binder:
+          brokers: 10.183.7.128:31500,10.183.7.128:31501,10.183.7.128:31502
+          defaultBrokerPort: 31500
+          configuration:
+            key:
+              deserializer: org.apache.kafka.common.serialization.StringDeserializer

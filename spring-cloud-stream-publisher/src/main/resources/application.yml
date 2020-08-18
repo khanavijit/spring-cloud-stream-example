@@ -3,4 +3,20 @@ spring:
     stream:
       bindings:
         output:
-          destination: javatechie-stream
+          destination: samplePdsmEmailEvent
+      kafka:
+        binder:
+          brokers: kafka.dev-onboarding.aws.heymobil.dk
+          defaultBrokerPort: 31090
+          configuration:
+            security:
+              protocol: SASL_SSL
+            sasl:
+              mechanism: SCRAM-SHA-512
+              jaas:
+                config: org.apache.kafka.common.security.scram.ScramLoginModule required username="demouser" password="secret";
+            ssl:
+
+              truststore:
+                location: C:\Program Files\AdoptOpenJDK\jdk-11.0.6.10-hotspot\lib\security\cacerts
+                password: changeit
